@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sweet Home — Подбор квартир онлайн</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fafafa;
+      color: #333;
+      text-align: center;
+      padding: 50px 20px;
+    }
+    h1 { color: #ff7a00; }
+    p { font-size: 18px; }
+    .button {
+      background-color: #ff7a00;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 18px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .button:hover { background-color: #e26d00; }
+    .hidden { display: none; }
+    .link-block { margin-top: 40px; }
+    .link-block a {
+      display: block;
+      margin: 10px 0;
+      text-decoration: none;
+      color: #ff7a00;
+      font-weight: bold;
+      transition: 0.2s;
+    }
+    .link-block a:hover { color: #e26d00; }
+  </style>
+</head>
+<body>
+
+  <h1>Sweet Home</h1>
+  <p>Подбор квартир онлайн. После оплаты вы получите доступ к подборкам по регионам.</p>
+
+  <button class="button" id="payButton">Получить подборку</button>
+
+  <div id="paymentBlock" class="hidden">
+    <h2>Оплата консультации</h2>
+    <p>Стоимость услуги — <strong>6 999 ₽</strong></p>
+    <p>После оплаты вы получите доступ к подборкам квартир.</p>
+    <a class="button" target="_blank"
+      href="https://invoicenpd.nalog.ru/?inn=544592328629&uuid=53bc6df0-ab14-4b1a-b38e-e48d21673ac4">
+      💳 Оплатить через Мой Налог
+    </a>
+    <p style="font-size:14px; color:#777; margin-top:10px;">
+      Оплачивая, вы соглашаетесь с условиями публичной оферты.
+    </p>
+  </div>
+
+  <div id="resultsBlock" class="hidden link-block">
+    <h2>Подборки квартир</h2>
+
+    <h3>🏙️ Москва</h3>
+    <a href="https://yandex.ru/nedvijimost/moskva/snyat/studiya/" target="_blank">Студии</a>
+    <a href="https://yandex.ru/nedvijimost/moskva/snyat/1-komnatnaya/" target="_blank">1-комнатные</a>
+    <a href="https://yandex.ru/nedvijimost/moskva/snyat/2-komnatnaya/" target="_blank">2-комнатные</a>
+    <a href="https://yandex.ru/nedvijimost/moskva/snyat/kvartira-do-50000/" target="_blank">До 50 000 ₽</a>
+    <a href="https://yandex.ru/nedvijimost/moskva/snyat/kvartira-semya/" target="_blank">Семейные</a>
+
+    <h3>🏙️ Санкт-Петербург</h3>
+    <a href="https://yandex.ru/nedvijimost/spb/snyat/studiya/" target="_blank">Студии</a>
+    <a href="https://yandex.ru/nedvijimost/spb/snyat/1-komnatnaya/" target="_blank">1-комнатные</a>
+    <a href="https://yandex.ru/nedvijimost/spb/snyat/2-komnatnaya/" target="_blank">2-комнатные</a>
+    <a href="https://yandex.ru/nedvijimost/spb/snyat/kvartira-do-50000/" target="_blank">До 50 000 ₽</a>
+    <a href="https://yandex.ru/nedvijimost/spb/snyat/kvartira-semya/" target="_blank">Семейные</a>
+
+    <h3>🏙️ Новосибирск</h3>
+    <a href="https://yandex.ru/nedvijimost/novosibirsk/snyat/studiya/" target="_blank">Студии</a>
+    <a href="https://yandex.ru/nedvijimost/novosibirsk/snyat/1-komnatnaya/" target="_blank">1-комнатные</a>
+    <a href="https://yandex.ru/nedvijimost/novosibirsk/snyat/2-komnatnaya/" target="_blank">2-комнатные</a>
+    <a href="https://yandex.ru/nedvijimost/novosibirsk/snyat/kvartira-do-50000/" target="_blank">До 50 000 ₽</a>
+    <a href="https://yandex.ru/nedvijimost/novosibirsk/snyat/kvartira-semya/" target="_blank">Семейные</a>
+
+    <h3>🏙️ Екатеринбург</h3>
+    <a href="https://yandex.ru/nedvijimost/ekaterinburg/snyat/studiya/" target="_blank">Студии</a>
+    <a href="https://yandex.ru/nedvijimost/ekaterinburg/snyat/1-komnatnaya/" target="_blank">1-комнатные</a>
+    <a href="https://yandex.ru/nedvijimost/ekaterinburg/snyat/2-komnatnaya/" target="_blank">2-комнатные</a>
+    <a href="https://yandex.ru/nedvijimost/ekaterinburg/snyat/kvartira-do-50000/" target="_blank">До 50 000 ₽</a>
+    <a href="https://yandex.ru/nedvijimost/ekaterinburg/snyat/kvartira-semya/" target="_blank">Семейные</a>
+
+    <h3>🏙️ Казань</h3>
+    <a href="https://yandex.ru/nedvijimost/kazan/snyat/studiya/" target="_blank">Студии</a>
+    <a href="https://yandex.ru/nedvijimost/kazan/snyat/1-komnatnaya/" target="_blank">1-комнатные</a>
+    <a href="https://yandex.ru/nedvijimost/kazan/snyat/2-komнатнaya/" target="_blank">2-комнатные</a>
+    <a href="https://yandex.ru/nedvijimost/kazan/snyat/kvartira-do-50000/" target="_blank">До 50 000 ₽</a>
+    <a href="https://yandex.ru/nedvijimost/kazan/snyat/kvartira-semya/" target="_blank">Семейные</a>
+  </div>
+
+  <script>
+    const payButton = document.getElementById('payButton');
+    const paymentBlock = document.getElementById('paymentBlock');
+    const resultsBlock = document.getElementById('resultsBlock');
+
+    payButton.addEventListener('click', () => {
+      paymentBlock.classList.remove('hidden');
+      setTimeout(() => {
+        resultsBlock.classList.remove('hidden');
+      }, 3000);
+    });
+  </script>
+
+</body>
+</html>
