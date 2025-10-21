@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sweet Home — Помощь с арендой</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #121212;
+      color: #f5f5f5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+    header {
+      width: 100%;
+      background: #1f1f1f;
+      text-align: center;
+      padding: 20px 0;
+      font-size: 24px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      border-bottom: 2px solid #333;
+    }
+    .container {
+      max-width: 600px;
+      padding: 20px;
+      text-align: center;
+    }
+    button {
+      background: #ffb300;
+      color: #000;
+      border: none;
+      padding: 15px 25px;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+    button:hover {
+      background: #ffc733;
+    }
+    .hidden {
+      display: none;
+    }
+    .links a {
+      display: block;
+      margin: 10px 0;
+      color: #00bfff;
+      text-decoration: none;
+      font-size: 18px;
+    }
+    .links a:hover {
+      text-decoration: underline;
+    }
+    .admin {
+      margin-top: 30px;
+      font-size: 12px;
+      color: #888;
+      cursor: pointer;
+    }
+    .input-box {
+      margin-top: 20px;
+    }
+    input {
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      width: 200px;
+      text-align: center;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>🏠 Sweet Home</header>
+
+  <div class="container">
+    <p>Подбор квартир в онлайн-формате. Ежедневно обновляемая база объявлений по всей России.</p>
+    <p><strong>После оплаты</strong> станет доступна подборка квартир по городам и комнатам.</p>
+
+    <button onclick="window.open('https://invoicenpd.nalog.ru/?inn=544592328629&uuid=53bc6df0-ab14-4b1a-b38e-e48d21673ac4','_blank')">
+      Получить подборку — 6999 ₽
+    </button>
+
+    <button onclick="showCodeInput()">Я оплатил — ввести код</button>
+
+    <div id="codeInput" class="hidden input-box">
+      <p>Введите последние 4 цифры номера чека:</p>
+      <input type="text" id="checkCode" maxlength="4" placeholder="Например 1234">
+      <button onclick="verifyCode()">Подтвердить</button>
+    </div>
+
+    <div id="links" class="hidden links">
+      <h3>Подборки квартир</h3>
+      <a href="https://realty.yandex.ru/moskva/snyat/kvartira/" target="_blank">Москва</a>
+      <a href="https://realty.yandex.ru/sankt-peterburg/snyat/kvartira/" target="_blank">Санкт-Петербург</a>
+      <a href="https://realty.yandex.ru/novosibirsk/snyat/kvartira/" target="_blank">Новосибирск</a>
+      <a href="https://realty.yandex.ru/kazan/snyat/kvartira/" target="_blank">Казань</a>
+      <a href="https://realty.yandex.ru/perm/snyat/kvartira/" target="_blank">Пермь</a>
+      <a href="https://realty.yandex.ru/chelyabinsk/snyat/kvartira/" target="_blank">Челябинск</a>
+    </div>
+
+    <p class="admin" onclick="openAdmin()">⚙ Админ-панель</p>
+  </div>
+
+  <script>
+    let validCodes = ["1234"]; // тестовый код, замени после первой оплаты
+
+    function showCodeInput() {
+      document.getElementById('codeInput').classList.remove('hidden');
+    }
+
+    function verifyCode() {
+      const code = document.getElementById('checkCode').value.trim();
+      if (validCodes.includes(code)) {
+        document.getElementById('links').classList.remove('hidden');
+        document.getElementById('codeInput').classList.add('hidden');
+      } else {
+        alert("Неверный код. Проверьте последние 4 цифры чека.");
+      }
+    }
+
+    function openAdmin() {
+      const pass = prompt("Введите пароль администратора:");
+      if (pass === "admin123") {
+        const newCode = prompt("Добавить 4 цифры нового чека:");
+        if (newCode && newCode.length === 4) {
+          validCodes.push(newCode);
+          alert("Код добавлен: " + newCode);
+        } else {
+          alert("Нужно ввести 4 цифры.");
+        }
+      } else {
+        alert("Неверный пароль.");
+      }
+    }
+  </script>
+
+</body>
+</html>
