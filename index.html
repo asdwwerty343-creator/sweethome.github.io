@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sweet Home — подбор квартир онлайн</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Oferta modal (must accept to view site) -->
+  <div id="oferta-modal" class="modal" aria-hidden="false" data-blocking="true">
+    <div class="modal-content oferta">
+      <h2>Публичная оферта — Sweet Home</h2>
+      <div class="oferta-body">
+        <p>Настоящая оферта является официальным предложением индивидуального предпринимателя — самозанятого (далее — <strong>Исполнитель</strong>) по оказанию информационно-консультационных услуг по подбору жилых помещений.</p>
+        <p>Акцептом (согласием) считается нажатие кнопки «Согласен». Услуга считается оказанной в момент направления подобранных вариантов. Оплата осуществляется заранее — возврат денежных средств не производится.</p>
+        <p>Нажимая «Согласен», вы подтверждаете, что ознакомлены с условиями оферты и снимаете с Исполнителя ответственность за действия третьих лиц (арендодателей, агентств и т.п.).</p>
+      </div>
+      <div class="oferta-actions">
+        <button id="agree-btn">Согласен</button>
+        <button id="decline-btn" class="btn-ghost">Не согласен</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Access denied message (shown if user declines) -->
+  <div id="access-denied" class="access-denied hidden">
+    <div class="container">
+      <h2>Доступ ограничен</h2>
+      <p>Вы не приняли условия публичной оферты. Просмотр содержимого сайта Sweet Home невозможен без акцепта оферты.</p>
+    </div>
+  </div>
+
+  <!-- Main site content (hidden until accepted) -->
+  <div id="site-content" class="site-hidden">
+    <header class="site-header">
+      <div class="container">
+        <h1>Sweet Home</h1>
+        <nav>
+          <a href="#about">О сервисе</a>
+          <a href="#how">Как это работает</a>
+          <a href="#listings">Объявления</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <section id="hero" class="hero">
+        <h2>Подбор квартир онлайн — быстро и удобно</h2>
+        <p>Мы подбираем варианты из базы всех агентств недвижимости. Никаких поездок — всё в онлайне.</p>
+        <div class="cta">
+          <button id="open-upload">Добавить фото / объявление</button>
+        </div>
+      </section>
+
+      <section id="about" class="about">
+        <h3>О сервисе Sweet Home</h3>
+        <p>Подбор квартир осуществляется полностью в <strong>онлайн-формате</strong>. Вам не нужно никуда ехать — мы собираем и отправляем подходящие варианты в мессенджер или на e‑mail. База обновляется <strong>ежедневно</strong> и включает предложения всех агентств недвижимости. В дальнейшем вы сможете просмотреть фотографии объектов прямо на сайте.</p>
+      </section>
+
+      <section id="how" class="how">
+        <h3>Как мы работаем</h3>
+        <ol>
+          <li>Вы указываете требования: район, бюджет, количество комнат, сроки.</li>
+          <li>Мы ежедневно проверяем предложения всех агентств и формируем подборку.</li>
+          <li>Результат направляем вам — услуга считается оказанной в момент отправки.</li>
+        </ol>
+      </section>
+
+      <section id="listings" class="listings-section">
+        <h3>Объявления</h3>
+        <div id="listings" class="listings-grid">
+          <p class="muted">Фотографии и объявления будут добавлены позднее. Используйте кнопку «Добавить фото / объявление» чтобы загрузить варианты.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <small>© Sweet Home — подбор квартир онлайн</small>
+      </div>
+    </footer>
+
+    <!-- Modal for adding listing (only for owner/admin) -->
+    <div id="upload-modal" class="modal" aria-hidden="true">
+      <div class="modal-content">
+        <button class="modal-close" id="modal-close">&times;</button>
+        <h3>Добавить объявление</h3>
+        <form id="upload-form">
+          <label>Заголовок<input type="text" id="title" required></label>
+          <label>Описание<textarea id="description" rows="3"></textarea></label>
+          <label>Адрес<input type="text" id="address"></label>
+          <label>Цена (руб.)<input type="number" id="price"></label>
+          <label>Фотографии<input type="file" id="images" accept="image/*" multiple></label>
+          <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:10px">
+            <button type="submit">Добавить</button>
+            <button type="button" id="upload-cancel" class="btn-ghost">Отмена</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <template id="listing-template">
+    <article class="card">
+      <div class="card-media"></div>
+      <div class="card-body">
+        <h4 class="card-title"></h4>
+        <p class="card-desc"></p>
+        <p class="card-meta"></p>
+        <div class="card-actions">
+          <button class="view-btn">Просмотр</button>
+          <button class="download-btn">Скачать фото</button>
+        </div>
+      </div>
+    </article>
+  </template>
+
+  <script src="scripts.js"></script>
+</body>
+</html>
